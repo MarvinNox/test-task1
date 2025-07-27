@@ -1,0 +1,18 @@
+.header {
+  padding-block: 20px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  border-bottom: solid 1px rgb(78, 76, 76);
+}
+.headerList {
+  display: flex;
+  gap: 20px;
+}
+.headerLink {
+  font-size: 20px;
+  transition: all 300ms ease-in;
+  &:hover {
+    scale: 1.05;
+  }
+}
