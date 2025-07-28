@@ -2,14 +2,14 @@
   display: flex;
   justify-content: center;
   padding-block: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   border-top: solid 1px rgb(78, 76, 76);
 }
 .footerContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
 }
 
 .footer a {
