@@ -1,12 +1,7 @@
 import { getDictionary } from "@/lib/getDictionary";
 import css from "./Footer.module.css";
 
-export default async function Footer({
-  params,
-}: {
-  params: Promise<{ locale: "en" | "uk" }>;
-}) {
-  const { locale } = await params;
+export default async function Footer({ locale }: { locale: "en" | "uk" }) {
   const dict = await getDictionary(locale);
 
   return (

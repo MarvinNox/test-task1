@@ -3,12 +3,7 @@ import css from "./Header.module.css";
 import { getDictionary } from "@/lib/getDictionary";
 import LanguageSwitcher from "../LangSwitcher/LanguageSwitcher";
 
-export default async function Header({
-  params,
-}: {
-  params: Promise<{ locale: "en" | "uk" }>;
-}) {
-  const { locale } = await params;
+export default async function Header({ locale }: { locale: "en" | "uk" }) {
   const dict = await getDictionary(locale);
 
   return (

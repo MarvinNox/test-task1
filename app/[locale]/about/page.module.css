@@ -1,0 +1,13 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  padding-inline: 50px;
+}
+.aboutTitle {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.aboutBody {
+  align-self: center;
+  max-width: clamp(320px, 50vw, 500px);
+}
