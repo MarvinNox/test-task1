@@ -1,7 +1,7 @@
 import Link from "next/link";
 import css from "./Header.module.css";
 import { getDictionary } from "@/lib/getDictionary";
-import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
+import LanguageSwitcher from "../LangSwitcher/LanguageSwitcher";
 
 export default async function Header({
   params,

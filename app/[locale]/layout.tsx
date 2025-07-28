@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import "./globals.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 
 const geistSans = Geist({
@@ -40,15 +39,18 @@ export const metadata: Metadata = {
     images: [""],
   },
 };
-export default function RootLayout({
+
+export default async function LocaleLayout({
   children,
   params,
-}: Readonly<{
+}: {
   children: React.ReactNode;
   params: Promise<{ locale: "en" | "uk" }>;
-}>) {
+}) {
+  const { locale } = await params;
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TanStackProvider>
           <Header params={params} />

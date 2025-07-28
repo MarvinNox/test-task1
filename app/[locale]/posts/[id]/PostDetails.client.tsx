@@ -3,8 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import { useParams, useRouter } from "next/navigation";
 import { fetchPostById } from "@/lib/api";
 import css from "./PostDetails.module.css";
+import { Dictionary } from "@/types/dict";
 
-export default function PostDetailsClient({ dict }: any) {
+type Props = {
+  dict: Dictionary;
+};
+
+export default function PostDetailsClient({ dict }: Props) {
   const { id } = useParams() as { id: string };
   const router = useRouter();
   const time = 1000 * 60 * 5;
