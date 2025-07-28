@@ -3,8 +3,9 @@ import {
   HydrationBoundary,
   dehydrate,
 } from "@tanstack/react-query";
-import { fetchPostById } from "@/lib/api";
+import { fetchPostById, fetchPosts } from "@/lib/api";
 import PostDetailsClient from "./PostDetails.client";
+import { Post } from "@/types/post";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -24,4 +25,10 @@ const PageDetails = async ({ params }: Props) => {
     </HydrationBoundary>
   );
 };
+export const dynamicParams = false;
+export async function generateStaticParams() {
+  const res = await fetchPosts();
+  return res.map((post: Post) => ({ id: post.id.toString() }));
+}
+
 export default PageDetails;

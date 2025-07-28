@@ -5,13 +5,19 @@ import { fetchPostById } from "@/lib/api";
 import css from "./PostDetails.module.css";
 
 export default function PostDetailsClient() {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams() as { id: string };
   const router = useRouter();
-  const { data } = useQuery({
+  const time = 1000 * 60 * 5;
+  const { data, isLoading, isError } = useQuery({
     queryKey: ["post", id],
     queryFn: () => fetchPostById(+id),
     refetchOnMount: false,
+    staleTime: time,
   });
+  if (!id) return <p>Invalid post ID</p>;
+  if (isLoading) return <p>Loading...</p>;
+  if (isError) return <p>Error loading post</p>;
+
   return (
     <div className={css.postContainer}>
       <div className={css.postItem}>
