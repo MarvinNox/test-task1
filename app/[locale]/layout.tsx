@@ -42,16 +42,18 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({
   children,
+  params,
 }: Readonly<{
   children: React.ReactNode;
+  params: Promise<{ locale: "en" | "uk" }>;
 }>) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <TanStackProvider>
-          <Header />
+          <Header params={params} />
           <main>{children}</main>
-          <Footer />
+          <Footer params={params} />
         </TanStackProvider>
       </body>
     </html>

@@ -1,0 +1,9 @@
+{
+  "about": {
+    "body": "Welcome to our mini blog! Here, we share thoughts, ideas, and stories on a variety of topics that inspire us every day. Our goal is to create a simple and friendly space where everyone can discover interesting content, learn something new, and connect with like-minded people. Whether you’re here to read quick updates or explore deeper insights, we’re glad to have you with us. Stay tuned for more posts, and thank you for being part of our community!",
+    "title": "About Us"
+  },
+  "button": { "back": "Go back", "more": "See more" },
+  "footer": { "contacts": "Contact me:" },
+  "header": { "about": "About", "home": "Home" }
+}

@@ -6,13 +6,16 @@ import {
 import { fetchPostById, fetchPosts } from "@/lib/api";
 import PostDetailsClient from "./PostDetails.client";
 import { Post } from "@/types/post";
+import { getDictionary } from "@/lib/getDictionary";
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: Promise<{ locale: "en" | "uk"; id: string }>;
 };
 
 const PageDetails = async ({ params }: Props) => {
-  const { id } = await params;
+  const { id, locale } = await params;
+  const dict = await getDictionary(locale);
+
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
     queryKey: ["post", id],
@@ -21,14 +24,23 @@ const PageDetails = async ({ params }: Props) => {
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <PostDetailsClient />
+      <PostDetailsClient dict={dict} />
     </HydrationBoundary>
   );
 };
+
 export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const res = await fetchPosts();
-  return res.map((post: Post) => ({ id: post.id.toString() }));
+  const locales = ["en", "uk"];
+
+  return locales.flatMap((locale) =>
+    res.map((post: Post) => ({
+      locale,
+      id: post.id.toString(),
+    }))
+  );
 }
 
 export default PageDetails;

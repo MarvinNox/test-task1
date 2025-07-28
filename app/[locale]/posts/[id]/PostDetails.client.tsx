@@ -4,7 +4,7 @@ import { useParams, useRouter } from "next/navigation";
 import { fetchPostById } from "@/lib/api";
 import css from "./PostDetails.module.css";
 
-export default function PostDetailsClient() {
+export default function PostDetailsClient({ dict }: any) {
   const { id } = useParams() as { id: string };
   const router = useRouter();
   const time = 1000 * 60 * 5;
@@ -25,10 +25,10 @@ export default function PostDetailsClient() {
         <p>{data?.body}</p>
         <button
           type="button"
-          onClick={() => router.push("/")}
+          onClick={() => router.back()}
           className={css.postButton}
         >
-          <span className={css.postButton_top}>Go Back</span>
+          <span className={css.postButton_top}>{dict.button.back}</span>
         </button>
       </div>
     </div>
